@@ -23,6 +23,10 @@ Nimvio Live Preview SDK
         - [Parameters](#parameters-2)
         - [Returns](#returns-2)
         - [Example](#example-2)
+      - [`onNewPreviewContent(callback)`](#onnewpreviewcontentcallback)
+        - [Parameters](#parameters-3)
+        - [Returns](#returns-3)
+        - [Example](#example-3)
   - [Examples](#examples)
 </details>
 
@@ -190,6 +194,26 @@ const contentOpenListener = sdk.livePreviewUtils.onOpenPreviewContent((contentDa
 
 // Call the destroy method on the saved function when the app is unmounted to prevent memory leak
 contentOpenListener.destroy()
+```
+
+#### `onNewPreviewContent(callback)`
+Live Preview Utility function to handle content being created inside the Nimvio Content Editor or Website Management via the content tree
+##### Parameters
+- `callback` - Callback function that will be called when the content being created inside the Nimvio Content Editor via content tree
+##### Returns
+An object with a destroy method to unsubscribe and remove this listener. Should be called when the app is unmounted
+
+##### Example
+```typescript
+const sdk = WebLink.init()
+
+const newContentListener = sdk.livePreviewUtils.onNewPreviewContent((contentData) => {
+  // Some custom function to handle the newly created content
+  openContentPage(contentData)
+})
+
+// Call the destroy method on the saved function when the app is unmounted to prevent memory leak
+newContentListener.destroy()
 ```
 
 ## Examples

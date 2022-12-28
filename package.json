@@ -1,6 +1,6 @@
 {
   "name": "@nimvio/live-preview-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nimvio Live Preview SDK",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
@@ -26,7 +26,8 @@
   "scripts": {
     "release": "commit-and-tag-version",
     "build": "rollup -c --bundleConfigAsCjs",
-    "build:watch": "rollup -w -c --bundleConfigAsCjs"
+    "build:watch": "rollup -w -c --bundleConfigAsCjs",
+    "build:publish": "yarn run build && yarn publish --access public --dry-run"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",

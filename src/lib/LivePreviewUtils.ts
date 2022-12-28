@@ -42,4 +42,16 @@ export class LivePreview {
       destroy: () => iframeCommunicator.unsubscribe('open-content', callback)
     }
   }
+
+  /**
+   * Live Preview Utility function to handle content being created inside the Nimvio Content Editor or Website Management via the content tree
+   * @param callback Callback function that will be called when the content being created inside the Nimvio Content Editor via content tree
+   * @returns An object with a destroy method to unsubscribe and remove all listeners. Should be called when the app is unmounted
+   */
+  public onNewPreviewContent<T> (callback: IFrameReceivedMessageCallbackMap<T>['new-content']): { destroy: () => void } {
+    iframeCommunicator.subscribe('new-content', callback)
+    return {
+      destroy: () => iframeCommunicator.unsubscribe('new-content', callback)
+    }
+  }
 }

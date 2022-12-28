@@ -10,6 +10,19 @@
   ],
   "author": "Nimvio",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nimvio-github/live-preview-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/nimvio-github/live-preview-sdk/issues"
+  },
+  "homepage": "https://github.com/nimvio-github/live-preview-sdk#readme",
+  "keywords": [
+    "Nimvio",
+    "Nimvio Live Preview",
+    "Nimvio Live Preview SDK"
+  ],
   "scripts": {
     "release": "commit-and-tag-version",
     "build": "rollup -c --bundleConfigAsCjs",

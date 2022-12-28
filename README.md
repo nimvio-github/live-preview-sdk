@@ -1,9 +1,30 @@
 Nimvio Live Preview SDK
 ===
 
-## Table of Contents
+<details>
+<summary>Table of Contents</summary>
 
-[TOC]
+- [Nimvio Live Preview SDK](#nimvio-live-preview-sdk)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API Documentation](#api-documentation)
+    - [**Data Attributes**](#data-attributes)
+    - [**SDK Configuration**](#sdk-configuration)
+    - [**Live Preview Utility Functions**](#live-preview-utility-functions)
+      - [`onPreviewContentChange(callback)`](#onpreviewcontentchangecallback)
+        - [Parameters](#parameters)
+        - [Returns](#returns)
+        - [Example](#example)
+      - [`onIFrameRefresh(callback)`](#oniframerefreshcallback)
+        - [Parameters](#parameters-1)
+        - [Returns](#returns-1)
+        - [Example](#example-1)
+      - [`onOpenPreviewContent(callback)`](#onopenpreviewcontentcallback)
+        - [Parameters](#parameters-2)
+        - [Returns](#returns-2)
+        - [Example](#example-2)
+  - [Examples](#examples)
+</details>
 
 ## Installation
 **NPM**

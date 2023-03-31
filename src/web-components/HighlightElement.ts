@@ -224,7 +224,7 @@ export class HighlightElement extends PositionedElement {
     const dataAttributes = parseEditButtonDataAttributes(this.targetRef)
     if (dataAttributes.contentId && dataAttributes.projectId) {
       if (!isInsideIFrame()) {
-        const url = `https://app-dev.nimvio.com/content-management/structure/edit/${dataAttributes.contentId}?project_id=${dataAttributes.projectId}`
+        const url = `https://app.nimvio.com/content-management/structure/edit/${dataAttributes.contentId}?project_id=${dataAttributes.projectId}`
         window.open(url, '_blank')?.focus()
       } else {
         iframeCommunicator.sendMessage('open-content', { contentId: dataAttributes.contentId, projectId: dataAttributes.projectId })

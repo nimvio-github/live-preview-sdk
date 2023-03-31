@@ -61,7 +61,8 @@ If you have already initialized the SDK and configured the [data-attributes](#da
 To add the live preview feature to your web app, you need to follow these steps:
 1. Initialize the SDK into your web app.
 2. Use the provided [live preview utility functions](#live-preview-utility-functions) to handle specific actions inside the Nimvio page.
-3. *Add instructions on how to register the website so it can be seen inside the Nimvio Website Management page. It can be a link that redirects to the guide page, or an instruction*
+3. Fill in the preview url input on project settings page > integrations with the web app url that already been initialized with the SDK.
+![Live preview integrations](./docs/integrations.png)
 
 
 ## API Documentation

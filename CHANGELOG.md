@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-### 0.1.2 (2023-03-29)
+### 0.1.3 (2023-05-02)
 
+### Bug Fixes
+
+* add more contrast to highlighter
+* fix overlap issue with fixed elements
+
+### 0.1.2 (2023-03-29)
 
 ### Features
 
@@ -13,7 +19,6 @@ All notable changes to this project will be documented in this file. See [commit
 * add new-content message listener
 * add README
 * allow custom configuration andd update IframeInitialization
-
 
 ### Bug Fixes
 

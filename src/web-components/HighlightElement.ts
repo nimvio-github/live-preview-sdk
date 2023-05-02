@@ -31,9 +31,10 @@ const templateHTML = `
       min-width: 40px;
       width: 100%;
       height: 100%;
-      border: 2px dashed !important;
+      border: 4px dashed !important;
       border-color: var(--app-color-primary-transparent, ${Colors.PrimaryTransparent}) !important;
       border-radius: 5px;
+      box-shadow: var(--app-shadow-inner, ${Shadows.Inner})
     }
     
     :host([hidden]) {

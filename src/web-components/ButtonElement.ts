@@ -36,6 +36,7 @@ const templateHTML = `
       align-items: center;
       border: none;
       cursor: pointer;
+      z-index: 999;
     }
     
     .app-button:focus {

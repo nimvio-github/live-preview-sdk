@@ -54,6 +54,7 @@ export type IFrameReceivedMessageCallbackMap<T = any> = {
   'toggle-weblink': IFrameMessageCallback<ToggleWeblinkReceivedPayloadData>
   'open-content': IFrameMessageCallback<OpenContentReceivedPayloadData<T>>
   'new-content': IFrameMessageCallback<OpenContentReceivedPayloadData<T>>
+  'sync': IFrameMessageCallback
 }
 
 export interface IFrameReceivedMessagePayload<T extends keyof IFrameReceivedMessageCallbackMap<any>> {

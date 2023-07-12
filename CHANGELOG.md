@@ -2,14 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-### 0.1.3 (2023-05-02)
+### 0.1.4 (2023-07-12)
+
+
+### Features
+
+* add sync functionality
+
 
 ### Bug Fixes
 
-* add more contrast to highlighter
-* fix overlap issue with fixed elements
+* -
 
-### 0.1.2 (2023-03-29)
+### 0.1.3 (2023-05-02)
+
 
 ### Features
 
@@ -19,6 +25,24 @@ All notable changes to this project will be documented in this file. See [commit
 * add new-content message listener
 * add README
 * allow custom configuration andd update IframeInitialization
+
+
+### Bug Fixes
+
+* webLink components failed to clear on toggle
+
+### 0.1.2 (2023-03-29)
+
+
+### Features
+
+* add Configuration Manager
+* add disableWeblink configuration
+* add more live preview utils
+* add new-content message listener
+* add README
+* allow custom configuration andd update IframeInitialization
+
 
 ### Bug Fixes
 

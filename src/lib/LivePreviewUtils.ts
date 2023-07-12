@@ -54,4 +54,16 @@ export class LivePreview {
       destroy: () => iframeCommunicator.unsubscribe('new-content', callback)
     }
   }
+
+  /**
+   * Live Preview Utility function to handle sync preview content
+   * @param callback Callback function that will be called when the user clicked sync button
+   * @returns An object with a destroy method to unsubscribe and remove all listeners. Should be called when the app is unmounted
+   */
+  public onSyncPreviewContent<T> (callback: IFrameReceivedMessageCallbackMap<T>['sync']): { destroy: () => void } {
+    iframeCommunicator.subscribe('sync', callback)
+    return {
+      destroy: () => iframeCommunicator.unsubscribe('sync', callback)
+    }
+  }
 }

@@ -27,6 +27,10 @@ Nimvio Live Preview SDK
         - [Parameters](#parameters-3)
         - [Returns](#returns-3)
         - [Example](#example-3)
+      - [`onSyncPreviewContent(callback)`](#onsyncpreviewcontentcallback)
+        - [Parameters](#parameters-4)
+        - [Returns](#returns-4)
+        - [Example](#example-4)
   - [Examples](#examples)
 </details>
 
@@ -217,5 +221,129 @@ const newContentListener = sdk.livePreviewUtils.onNewPreviewContent((contentData
 newContentListener.destroy()
 ```
 
+#### `onSycPreviewContent(callback)`
+Live Preview Utility function to handle synchronization of latest content (not published) with iframe on Website Management.
+##### Parameters
+- `callback` - Callback function that will be called when the user clicked sync button on top of the Iframe.
+##### Returns
+An object with a destroy method to unsubscribe and remove this listener. Should be called when the app is unmounted
+
+##### Example
+```typescript
+const sdk = WebLink.init()
+
+const newContentListener = sdk.livePreviewUtils.onSycPreviewContent(() => {
+  // Some custom function to handle the sync content
+  syncContent()
+})
+
+// Call the destroy method on the saved function when the app is unmounted to prevent memory leak
+newContentListener.destroy()
+```
+
+
 ## Examples
-*To be updated*
+How to use utility in project.
+#### ```onPreviewContentChange```:
+```html
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World with Nimvio</title>
+    <script src="main.js" async defer></script>
+    <style>
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 400px;
+        justify-content: center;
+        margin: 0 auto;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body data-nimvio-project-id="YOUR_PROJECT_ID">
+    <!-- The HTML elements are there only to display data from Nimvio.
+        Using JavaScript, you'll pull the content from your Nimvio project into the elements -->
+    <div
+      class="wrapper"
+      data-nimvio-content-id="YOUR_CONTENT_ID"
+    >
+      <img id="banner" />
+      <h1 id="headline"></h1>
+      <p id="bodyText"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@nimvio/live-preview-sdk@0.1.4"></script>
+    <script type="text/javascript">
+      const nimvioSdk = WebLink.init({
+        // SDK configuration
+        queryParams: "preview",
+        disableWeblink: false,
+      });
+
+      // define the content id for the live preview when change the content
+      const contentID = "YOUR_CONTENT_ID";
+
+      // live preview on content change
+      const previewChangeListener =
+        nimvioSdk.livePreviewUtils.onPreviewContentChange((newData) => {
+          const { id, formData } = newData;
+          if (id === contentID) { // check if the current preview content is same with the content edit
+            const { headline, bodyText, mediaUrl } = formData;
+            const sectionEl = document.querySelector(
+              `[data-nimvio-content-id=${contentID}]`
+            );
+            // headline update
+            sectionEl.querySelector("#headline").innerText = headline;
+            // body text update
+            // if the body is using RTE component, need to using innerHTML instead of innerText
+            sectionEl.querySelector("#bodyText").innerHTML = bodyText;
+            // media update
+            sectionEl.querySelector("#banner").src = mediaUrl.MediaUrl;
+          }
+        });
+    </script>
+  </body>
+</html>
+```
+
+```javascript main.js
+//main.js
+
+const API_CD_URL = "REST_API_URL_LINK";
+
+// Fetch json data from Nimvio API CD and return it
+async function fetchJSONData() {
+  const response = await fetch(API_CD_URL);
+  const jsonData = await response.json();
+
+  return jsonData;
+}
+
+// Processes the retrieved data and displays it on the page.
+function processData(response) {
+  const { Data } = response.data[0];
+  const bodyText = Data.bodyText;
+  const headline = Data.headline;
+
+  const picture = Data.mediaUrl.MediaUrl;
+  document.getElementById("banner").src = picture;
+  document.getElementById("bodyText").innerHTML = bodyText;
+  document.getElementById("headline").append(headline);
+}
+
+// Render function
+async function render() {
+  const data = await fetchJSONData();
+  processData(data);
+}
+
+render();
